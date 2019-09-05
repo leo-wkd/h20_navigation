@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="trajectory_planner" name="traject" type="traject" output="screen" />
+    <node pkg="trajectory_planner" name ="basic_controls" type="basic_controls" output="screen" />
+</launch>
