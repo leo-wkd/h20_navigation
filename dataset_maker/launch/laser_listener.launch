@@ -1,0 +1,3 @@
+<launch>	
+    <node pkg="dataset_maker" name="laser_listener" type="laser_listener" output="screen"/>
+</launch>
