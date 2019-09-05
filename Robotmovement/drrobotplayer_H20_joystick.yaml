@@ -1,0 +1,3 @@
+drrobot_player_manual: {RobotCommMethod: Network, RobotID: drrobot1, RobotBaseIP: 192.168.0.95,
+  RobotPortNum: 10001, RobotSerialPort: /dev/ttyS0, RobotType: Hawk_H20, MotorDir: 1, WheelRadius: 0.084, WheelDistance: 0.486,
+  EncoderCircleCnt: 375, MinSpeed: 0.1, MaxSpeed: 1.0, Enable_IR: true, Enable_US: true}

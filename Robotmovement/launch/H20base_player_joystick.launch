@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find urg_node)/launch/urg_lidar.launch"/>
+    <rosparam file="$(find drrobot_jaguar4x4_player)/drrobotplayer_H20_joystick.yaml" command="load"/>
+    <node pkg="drrobot_jaguar4x4_player" name="drrobot_player_joystick" type="drrobot_player_joystick" output="screen"/>
+</launch>

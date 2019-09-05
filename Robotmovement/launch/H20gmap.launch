@@ -1,0 +1,17 @@
+<launch>
+    <node pkg="gmapping" name="gmapping" type="slam_gmapping" output="screen">
+     <rosparam>
+       map_update_interval: 2.0
+       linearUpdate: 0.2
+       angularUpdate: 0.2
+       delta: 0.04
+       particles: 50
+       xmin: -40
+       ymin: -40
+       xmax: 40
+       ymax: 40
+
+
+     </rosparam>
+   </node>
+</launch>

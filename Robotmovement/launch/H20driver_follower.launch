@@ -1,0 +1,64 @@
+<launch>
+
+
+
+    <!--launches the driver (drrobot_player_stock_ and the path follower + params -->
+    <node pkg="drrobot_jaguar4x4_player" name="drrobot_player_stock" type="drrobot_player_stock" output="screen"/>
+    <node pkg="drrobot_jaguar4x4_player" name="drrobot_path_follower" type="drrobot_path_follower" output="screen"/>
+
+     <!--parameters for drrobot_path_follower; note that these are publicly assigned because I didn't know how to make a private nodehandle at the time -->
+     <rosparam>
+       speedMax: 0.085
+       speedInterval: 100
+       angularP: 0.9
+       angularI: 0.005
+       angularD: 10
+       maxIVal: 0.7
+     </rosparam>
+
+
+
+     <!--launches gmapping + params -->
+     <node pkg="gmapping" name="gmapping" type="slam_gmapping" output="screen">
+     <rosparam>
+       map_update_interval: 2.0
+       linearUpdate: 0.2
+       angularUpdate: 0.2
+       delta: 0.04
+       particles: 50
+       xmin: -40
+       ymin: -40
+       xmax: 40
+       ymax: 40
+      </rosparam>
+     </node>
+
+
+
+      <!--launches path planner and interactive goal marker (the green one) -->
+      <node pkg="trajectory_planner" name="traject" type="traject" output="screen" />
+      <node pkg="trajectory_planner" name ="basic_controls" type="basic_controls" output="screen" />
+
+
+
+      <!-- A simple launch file for the urg_node package. -->
+
+      <!--  When using an IP-connected LIDAR, populate the "ip_address" parameter with the address of the LIDAR.
+        Otherwise, leave it blank. If supported by your LIDAR, you may enable the publish_intensity
+        and/or publish_multiecho options. -->
+
+      <node name="urg_node" pkg="urg_node" type="urg_node" output="screen">
+        <param name="ip_address" value="192.168.0.10"/>
+        <param name="serial_port" value="/dev/ttyACM0"/>
+        <param name="serial_baud" value="115200"/>
+        <param name="frame_id" value="laser"/>
+        <param name="calibrate_time" value="true"/>
+        <param name="publish_intensity" value="false"/>
+        <param name="publish_multiecho" value="false"/>
+        <param name="angle_min" value="-1.570796"/>
+        <param name="angle_max" value="1.570796"/>
+      </node>
+
+
+
+</launch>

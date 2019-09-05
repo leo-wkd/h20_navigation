@@ -1,0 +1,11 @@
+<launch>
+
+    <include file="$(find urg_node)/launch/urg_lidar.launch"/>
+
+    <rosparam file="$(find drrobot_jaguar4x4_player)/drrobotplayer_H20.yaml" command="load"/>
+    <node pkg="drrobot_jaguar4x4_player" name="player_stock" type="drrobot_player_stock" output="screen"/>
+    <node pkg="drrobot_jaguar4x4_player" name="trajectory_plotter" type="drrobot_trajectory_plotter" output="screen"/>  
+
+
+</launch>
+

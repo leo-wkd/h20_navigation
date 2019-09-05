@@ -1,0 +1,230 @@
+
+<robot name="H20">
+
+<link name="base_link">
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+    <origin/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1 0 0.125" />
+    <geometry>
+        <box size=".50 .50 .250" />
+    </geometry>
+    <material name="red">
+      <color rgba="1 0.47 0.13 1" />
+    </material>
+  </visual>
+
+  <collision>
+    <origin xyz="0.1 0 0.125" />
+    <geometry>
+      <box size=".50 .250 .50" />
+    </geometry>
+    <contact_coefficients mu="0" kp="1000.0" kd="1.0"/>
+  </collision>
+</link>
+
+
+
+
+<link name="body">
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+    <origin/>
+  </inertial>
+
+  <visual>
+    <origin xyz="0 0 0.65" />
+    <geometry>
+      <box size=".13 .17 .8" />
+    </geometry>
+    <material name="white">
+      <color rgba="1 1 1 1"/>
+    </material>
+  </visual>
+
+  <collision>
+    <origin xyz="0 0 0.65" />
+    <geometry>
+      <box size=".13 .17 .8" />
+    </geometry>
+    <contact_coefficients mu="0" kp="1000.0" kd="1.0"/>
+  </collision>
+</link>
+
+<joint name="bodyconnect" type="fixed">
+  <origin xyz="0 0 0" />
+  <parent link="base_link"/>
+  <child link="body"/>
+</joint>
+
+
+<link name="armholder">
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+    <origin/>
+  </inertial>
+
+  <visual>
+    <origin xyz="0 0 1.085" rpy="1.57 0 0" />
+    <geometry>
+     <cylinder radius="0.035" length=".4" />
+    </geometry>
+    <material name="gray">
+      <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+  </visual>
+
+  <collision>
+    <origin xyz="0 0 1.085" rpy="1.57 0 0" />
+    <geometry>
+     <cylinder radius="0.035" length=".4" />
+    </geometry>
+    <contact_coefficients mu="0" kp="1000.0" kd="1.0"/>
+  </collision>
+</link>
+
+<joint name="armholderconnect" type="fixed">
+  <origin xyz="0 0 0" />
+  <parent link="body"/>
+  <child link="armholder"/>
+</joint>
+
+
+<link name="arml">
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+    <origin/>
+  </inertial>
+
+  <visual>
+    <origin xyz="0 0.2175 0.82" />
+    <geometry>
+     <cylinder radius="0.035" length=".6" />
+    </geometry>
+    <material name="orange">
+      <color rgba="1 0.47 0.13 1"/>
+    </material>
+  </visual>
+
+  <collision>
+    <origin xyz="0 0.2175 0.82"  />
+    <geometry>
+     <cylinder radius="0.035" length=".6" />
+    </geometry>
+    <contact_coefficients mu="0" kp="1000.0" kd="1.0"/>
+  </collision>
+</link>
+
+<joint name="armlerconnect" type="fixed">
+  <origin xyz="0 0 0" />
+  <parent link="armholder"/>
+  <child link="arml"/>
+</joint>
+
+<link name="armr">
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+    <origin/>
+  </inertial>
+
+  <visual>
+    <origin xyz="0 -0.2175 0.82" />
+    <geometry>
+     <cylinder radius="0.035" length=".6" />
+    </geometry>
+    <material name="orange">
+      <color rgba="1 0.47 0.13 1"/>
+    </material>
+  </visual>
+
+  <collision>
+    <origin xyz="0 -0.2175 0.82"  />
+    <geometry>
+     <cylinder radius="0.035" length=".6" />
+    </geometry>
+    <contact_coefficients mu="0" kp="1000.0" kd="1.0"/>
+  </collision>
+</link>
+
+<joint name="armrerconnect" type="fixed">
+  <origin xyz="0 0 0" />
+  <parent link="armholder"/>
+  <child link="armr"/>
+</joint>
+
+
+
+
+<link name="head">
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+    <origin/>
+  </inertial>
+
+  <visual>
+    <origin xyz="0 0 1.23" />
+    <geometry>
+      <box size=".15 .22 .22" />
+    </geometry>
+    <material name="orange">
+      <color rgba="1 0.47 0.13 1"/>
+    </material>
+  </visual>
+
+  <collision>
+    <origin xyz="0 0 1.23" />
+    <geometry>
+      <box size=".15 .22 .22" />
+    </geometry>
+    <contact_coefficients mu="0" kp="1000.0" kd="1.0"/>
+  </collision>
+</link>
+
+<joint name="headconnect" type="fixed">
+  <origin xyz="0 0 0" />
+  <parent link="armholder"/>
+  <child link="head"/>
+</joint>
+
+
+<link name="laptop">
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+    <origin/>
+  </inertial>
+
+  <visual>
+    <origin xyz="0.065 0 1.03" />
+    <geometry>
+      <box size=".02 .29 0.2" />
+    </geometry>
+    <material name="gray">
+      <color rgba="0.21 0.45 0.42 1"/>
+    </material>
+  </visual>
+
+  <collision>
+    <origin xyz="0.065 0 1.03" />
+    <geometry>
+      <box size=".02 .29 .2" />
+    </geometry>
+    <contact_coefficients mu="0" kp="1000.0" kd="1.0"/>
+  </collision>
+</link>
+
+<joint name="laptopconnect" type="fixed">
+  <origin xyz="0 0 0" />
+  <parent link="body"/>
+  <child link="laptop"/>
+</joint>
+
+</robot>

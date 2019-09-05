@@ -1,0 +1,5 @@
+<launch>	
+    <rosparam file="$(find drrobot_jaguar4x4_player)/drrobotplayer_H20_manual.yaml" command="load"/>
+    <node pkg="drrobot_jaguar4x4_player" name="drrobot_player_manual" type="drrobot_player_manual" output="screen"/>
+    <node pkg="drrobot_jaguar4x4_player" name="drrobotMsgTester" type="drrobotMsgTester" output="screen"/> 
+</launch>
